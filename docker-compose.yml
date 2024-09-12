@@ -33,7 +33,7 @@ services:
         build: .
         container_name: crudDemo_symfony
         ports:
-          - "8741:80"
+          - "8000:80"
         volumes:
             - ./docker/php/vhosts:/etc/apache2/sites-enabled
             - ./:/var/www
