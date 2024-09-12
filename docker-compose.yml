@@ -1,0 +1,48 @@
+version: "3.8"
+services:
+    # Mysql database container
+    db:
+        image: mysql
+        container_name: crudDemo_db_symfony
+        restart: always
+        ports:
+            - "3306:3306"
+        volumes:
+            - db-data:/var/lib/mysql
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        networks:
+            - crudDemo
+
+    # phpmyadmin container
+    phpmyadmin:
+        image: phpmyadmin
+        container_name: crudDemo_phpmyadmin
+        restart: always
+        depends_on:
+            - db
+        ports:
+            - 8080:80
+        environment:
+            PMA_HOST: db
+        networks:
+            - crudDemo
+
+    # Symfony apache project container
+    www:
+        build: .
+        container_name: crudDemo_symfony
+        ports:
+          - "8741:80"
+        volumes:
+            - ./docker/php/vhosts:/etc/apache2/sites-enabled
+            - ./:/var/www
+        restart: always
+        networks:
+            - crudDemo
+
+networks:
+    crudDemo:
+
+volumes:
+    db-data:
