@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\PostRepository;
+use App\Repository\MovieRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PostRepository::class)]
-class Post
+#[ORM\Entity(repositoryClass: MovieRepository::class)]
+class Movie
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -17,7 +17,7 @@ class Post
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $content = null;
+    private ?string $overview = null;
 
     public function getId(): ?int
     {
@@ -36,14 +36,14 @@ class Post
         return $this;
     }
 
-    public function getContent(): ?string
+    public function getOverview(): ?string
     {
-        return $this->content;
+        return $this->overview;
     }
 
-    public function setContent(string $content): static
+    public function setOverview(string $overview): static
     {
-        $this->content = $content;
+        $this->overview = $overview;
 
         return $this;
     }

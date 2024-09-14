@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+    input, textarea{
+        @apply border border-black px-3 py-2 rounded-md shadow-md
+    }
+
+}
+
+@layer components{
+    .form-group{
+        @apply flex flex-col gap-3 [&>label]:font-bold w-full
+    }
+
+    
+}

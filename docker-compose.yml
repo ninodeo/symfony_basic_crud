@@ -1,4 +1,4 @@
-version: "3.8"
+# version: "3.8"
 services:
     # Mysql database container
     db:
@@ -10,7 +10,8 @@ services:
         volumes:
             - db-data:/var/lib/mysql
         environment:
-            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
+            MYSQL_ROOT_PASSWORD: mysql_root_password
         networks:
             - crudDemo
 
